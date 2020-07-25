@@ -1,9 +1,11 @@
 import React from 'react';
+import OrganizationPage from '../OrganizationPage/OrganizationPage';
 
-function App() {
+
+const App = () => {
   return (
     <div className="App">
-
+      <OrganizationPage login={'impraise'}/>
     </div>
   );
 }
