@@ -2,16 +2,13 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
 import { GetOrganizationQuery, GetOrganizationQueryVariables } from 'types/operations.types';
+import { useParams } from 'react-router-dom';
 
 
 const GetOrganization = loader('src/operations/GetOrganization.graphql');
 
-type Props = {
-  login: string,
-}
-
-const OrganizationPage: React.FC<Props> = (props) => {
-  const { login } = props;
+const OrganizationPage = () => {
+  const { login = '' } = useParams();
   const { loading, data, error, fetchMore } = useQuery<GetOrganizationQuery, GetOrganizationQueryVariables>(
     GetOrganization,
     { variables: { login } }
