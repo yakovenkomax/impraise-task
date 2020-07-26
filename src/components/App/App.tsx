@@ -1,6 +1,5 @@
 import React from 'react';
 import OrganizationPage from '../OrganizationPage/OrganizationPage';
-import './App.css';
 
 
 const App = () => {
