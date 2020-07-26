@@ -12,7 +12,7 @@ type Props = {
 
 const OrganizationPage: React.FC<Props> = (props) => {
   const { login } = props;
-  const { loading, data, error } = useQuery<GetOrganizationQuery, GetOrganizationQueryVariables>(
+  const { loading, data, error, fetchMore } = useQuery<GetOrganizationQuery, GetOrganizationQueryVariables>(
     GetOrganization,
     { variables: { login } }
   );
@@ -30,13 +30,42 @@ const OrganizationPage: React.FC<Props> = (props) => {
     return null;
   }
 
-  const { name, location, websiteUrl } = organization;
+  const { name, location, websiteUrl, repositories } = organization;
+
+  const loadMore = () => {
+    fetchMore({
+      variables: {
+        login,
+        cursor: data?.organization?.repositories.pageInfo.endCursor,
+      },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult) {
+          return previousResult;
+        }
+
+        if (fetchMoreResult?.organization?.repositories.edges) {
+          fetchMoreResult.organization.repositories.edges = [
+            ...previousResult?.organization?.repositories.edges || [],
+            ...fetchMoreResult.organization.repositories.edges,
+          ];
+        }
+
+        return fetchMoreResult;
+      },
+    });
+  }
 
   return (
     <div className="OrganizationPage">
       <div>Name: { name }</div>
       <div>Location: { location }</div>
       <div>WebsiteUrl: { websiteUrl }</div>
+      <ul>
+        { repositories.edges?.map(edge => (
+          <li key={edge?.node?.id}>{ edge?.node?.name }</li>
+        )) }
+      </ul>
+      <button onClick={loadMore}>Load more</button>
     </div>
   );
 }

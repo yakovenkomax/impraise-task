@@ -1,7 +1,19 @@
-query GetOrganization($login: String!) {
+query GetOrganization($login: String!, $cursor: String) {
   organization(login: $login) {
     name
     location
     websiteUrl
+    repositories(first: 5, after: $cursor) {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
   }
 }
