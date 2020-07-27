@@ -2,12 +2,28 @@ query GetOrganization($login: String!, $cursor: String) {
   organization(login: $login) {
     name
     location
+    avatarUrl
     websiteUrl
+    pinnedItems(types: REPOSITORY, first: 3) {
+      edges {
+        node {
+          ... on Repository {
+            ...repositoryFields
+          }
+        }
+      }
+    }
     repositories(first: 5, after: $cursor) {
       edges {
         node {
-          id
-          name
+          ...repositoryFields
+          updatedAt
+          parent {
+            nameWithOwner
+          }
+          licenseInfo {
+            spdxId
+          }
         }
       }
       pageInfo {
@@ -15,5 +31,21 @@ query GetOrganization($login: String!, $cursor: String) {
         endCursor
       }
     }
+  }
+}
+
+fragment repositoryFields on Repository {
+  id
+  name
+  description
+  primaryLanguage {
+    color
+    name
+  }
+  stargazers {
+    totalCount
+  }
+  forks {
+    totalCount
   }
 }
