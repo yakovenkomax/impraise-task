@@ -1,31 +1,34 @@
 import {
-  Exact, Gist,
-  Language, License,
+  Exact,
+  ILanguage,
+  ILicense,
+  IOrganization,
+  IPageInfo,
+  IRepository,
   Maybe,
-  Organization,
-  PageInfo,
-  Repository, RepositoryConnection,
   Scalars,
-  StargazerConnection,
+  IStargazerConnection,
+  IRepositoryConnection,
 } from 'types/schema.types';
 
-export type GetOrganizationQueryVariables = Exact<{
+export type IGetOrganizationQueryVariables = Exact<{
   login: Scalars['String'];
   cursor?: Maybe<Scalars['String']>;
 }>;
 
-export type GetOrganizationQuery = (
+
+export type IGetOrganizationQuery = (
   { __typename?: 'Query' }
   & { organization?: Maybe<(
     { __typename?: 'Organization' }
-    & Pick<Organization, 'name' | 'location' | 'avatarUrl' | 'websiteUrl'>
+    & Pick<IOrganization, 'name' | 'location' | 'avatarUrl' | 'websiteUrl'>
     & { pinnedItems: (
       { __typename?: 'PinnableItemConnection' }
       & { edges?: Maybe<Array<Maybe<(
         { __typename?: 'PinnableItemEdge' }
         & { node?: Maybe<{ __typename?: 'Gist' } | (
           { __typename?: 'Repository' }
-          & RepositoryFieldsFragment
+          & IRepositoryFieldsFragment
           )> }
         )>>> }
       ), repositories: (
@@ -34,35 +37,35 @@ export type GetOrganizationQuery = (
         { __typename?: 'RepositoryEdge' }
         & { node?: Maybe<(
           { __typename?: 'Repository' }
-          & Pick<Repository, 'updatedAt'>
+          & Pick<IRepository, 'updatedAt'>
           & { parent?: Maybe<(
             { __typename?: 'Repository' }
-            & Pick<Repository, 'nameWithOwner'>
+            & Pick<IRepository, 'nameWithOwner'>
             )>, licenseInfo?: Maybe<(
             { __typename?: 'License' }
-            & Pick<License, 'spdxId'>
+            & Pick<ILicense, 'spdxId'>
             )> }
-          & RepositoryFieldsFragment
+          & IRepositoryFieldsFragment
           )> }
         )>>>, pageInfo: (
         { __typename?: 'PageInfo' }
-        & Pick<PageInfo, 'hasNextPage' | 'endCursor'>
+        & Pick<IPageInfo, 'hasNextPage' | 'endCursor'>
         ) }
       ) }
     )> }
   );
 
-export type RepositoryFieldsFragment = (
+export type IRepositoryFieldsFragment = (
   { __typename?: 'Repository' }
-  & Pick<Repository, 'id' | 'name' | 'description'>
+  & Pick<IRepository, 'id' | 'name' | 'description'>
   & { primaryLanguage?: Maybe<(
     { __typename?: 'Language' }
-    & Pick<Language, 'color' | 'name'>
+    & Pick<ILanguage, 'color' | 'name'>
     )>, stargazers: (
     { __typename?: 'StargazerConnection' }
-    & Pick<StargazerConnection, 'totalCount'>
+    & Pick<IStargazerConnection, 'totalCount'>
     ), forks: (
     { __typename?: 'RepositoryConnection' }
-    & Pick<RepositoryConnection, 'totalCount'>
+    & Pick<IRepositoryConnection, 'totalCount'>
     ) }
   );
