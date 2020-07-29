@@ -1,24 +1,19 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-import { loader } from 'graphql.macro';
-import { IGetOrganizationQuery, IGetOrganizationQueryVariables } from 'types/operations.types';
 import { useParams } from 'react-router-dom';
+import Icon from 'components/Icon/Icon';
 import Text from 'components/Text/Text';
 import RepositoryList from 'components/RepositoryList/RepositoryList';
 import PinnedRepositoryList from 'components/PinnedRepositoryList/PinnedRepositoryList';
+import { useGetOrganizationQuery } from 'types/apollo.hooks';
 
 import s from './OrganizationPage.module.css';
-import Icon from 'components/Icon/Icon';
 
-
-const GetOrganization = loader('src/operations/GetOrganization.graphql');
 
 const OrganizationPage = () => {
   const { login = '' } = useParams();
-  const { loading, data, error, fetchMore } = useQuery<IGetOrganizationQuery, IGetOrganizationQueryVariables>(
-    GetOrganization,
-    { variables: { login } }
-  );
+  const { loading, data, error, fetchMore } = useGetOrganizationQuery({
+    variables: { login },
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;

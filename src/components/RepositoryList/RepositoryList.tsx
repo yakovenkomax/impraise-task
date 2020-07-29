@@ -1,13 +1,13 @@
 import LanguageTag from 'components/LanguageTag/LanguageTag';
 import Text from 'components/Text/Text';
 import React from 'react';
-import { IRepositoryList } from './RepositoryList.types';
+import { RepositoryListType } from 'components/RepositoryList/RepositoryList.types';
 
 import s from './RepositoryList.module.css';
 import Tag from 'components/Tag/Tag';
 
 type Props = {
-  repositoryList: IRepositoryList,
+  repositoryList: RepositoryListType,
 }
 
 const RepositoryList: React.FC<Props> = (props) => {

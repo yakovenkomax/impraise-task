@@ -2,12 +2,12 @@ import LanguageTag from 'components/LanguageTag/LanguageTag';
 import Tag from 'components/Tag/Tag';
 import Text from 'components/Text/Text';
 import React from 'react';
-import { IPinnedRepositoryList } from './PinnedRepositoryList.types';
+import { PinnedRepositoryListType } from './PinnedRepositoryList.types';
 
 import s from './PinnedRepositoryList.module.css';
 
 type Props = {
-  pinnedRepositoryList: IPinnedRepositoryList,
+  pinnedRepositoryList: PinnedRepositoryListType,
 }
 
 const PinnedRepositoryList: React.FC<Props> = (props) => {

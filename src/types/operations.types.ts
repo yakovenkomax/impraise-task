@@ -1,71 +1,61 @@
-import {
-  Exact,
-  ILanguage,
-  ILicense,
-  IOrganization,
-  IPageInfo,
-  IRepository,
-  Maybe,
-  Scalars,
-  IStargazerConnection,
-  IRepositoryConnection,
-} from 'types/schema.types';
+import * as Types from './schema.types';
 
-export type IGetOrganizationQueryVariables = Exact<{
-  login: Scalars['String'];
-  cursor?: Maybe<Scalars['String']>;
+
+export type GetOrganizationQueryVariables = Types.Exact<{
+  login: Types.Scalars['String'];
+  cursor?: Types.Maybe<Types.Scalars['String']>;
 }>;
 
 
-export type IGetOrganizationQuery = (
+export type GetOrganizationQuery = (
   { __typename?: 'Query' }
-  & { organization?: Maybe<(
+  & { organization?: Types.Maybe<(
     { __typename?: 'Organization' }
-    & Pick<IOrganization, 'name' | 'location' | 'avatarUrl' | 'websiteUrl'>
+    & Pick<Types.Organization, 'name' | 'location' | 'avatarUrl' | 'websiteUrl'>
     & { pinnedItems: (
       { __typename?: 'PinnableItemConnection' }
-      & { edges?: Maybe<Array<Maybe<(
+      & { edges?: Types.Maybe<Array<Types.Maybe<(
         { __typename?: 'PinnableItemEdge' }
-        & { node?: Maybe<{ __typename?: 'Gist' } | (
+        & { node?: Types.Maybe<{ __typename?: 'Gist' } | (
           { __typename?: 'Repository' }
-          & IRepositoryFieldsFragment
-          )> }
-        )>>> }
-      ), repositories: (
+          & RepositoryFieldsFragment
+        )> }
+      )>>> }
+    ), repositories: (
       { __typename?: 'RepositoryConnection' }
-      & { edges?: Maybe<Array<Maybe<(
+      & { edges?: Types.Maybe<Array<Types.Maybe<(
         { __typename?: 'RepositoryEdge' }
-        & { node?: Maybe<(
+        & { node?: Types.Maybe<(
           { __typename?: 'Repository' }
-          & Pick<IRepository, 'updatedAt'>
-          & { parent?: Maybe<(
+          & Pick<Types.Repository, 'updatedAt'>
+          & { parent?: Types.Maybe<(
             { __typename?: 'Repository' }
-            & Pick<IRepository, 'nameWithOwner'>
-            )>, licenseInfo?: Maybe<(
+            & Pick<Types.Repository, 'nameWithOwner'>
+          )>, licenseInfo?: Types.Maybe<(
             { __typename?: 'License' }
-            & Pick<ILicense, 'spdxId'>
-            )> }
-          & IRepositoryFieldsFragment
+            & Pick<Types.License, 'spdxId'>
           )> }
-        )>>>, pageInfo: (
+          & RepositoryFieldsFragment
+        )> }
+      )>>>, pageInfo: (
         { __typename?: 'PageInfo' }
-        & Pick<IPageInfo, 'hasNextPage' | 'endCursor'>
-        ) }
+        & Pick<Types.PageInfo, 'hasNextPage' | 'endCursor'>
       ) }
-    )> }
-  );
-
-export type IRepositoryFieldsFragment = (
-  { __typename?: 'Repository' }
-  & Pick<IRepository, 'id' | 'name' | 'description'>
-  & { primaryLanguage?: Maybe<(
-    { __typename?: 'Language' }
-    & Pick<ILanguage, 'color' | 'name'>
-    )>, stargazers: (
-    { __typename?: 'StargazerConnection' }
-    & Pick<IStargazerConnection, 'totalCount'>
-    ), forks: (
-    { __typename?: 'RepositoryConnection' }
-    & Pick<IRepositoryConnection, 'totalCount'>
     ) }
-  );
+  )> }
+);
+
+export type RepositoryFieldsFragment = (
+  { __typename?: 'Repository' }
+  & Pick<Types.Repository, 'id' | 'name' | 'description'>
+  & { primaryLanguage?: Types.Maybe<(
+    { __typename?: 'Language' }
+    & Pick<Types.Language, 'color' | 'name'>
+  )>, stargazers: (
+    { __typename?: 'StargazerConnection' }
+    & Pick<Types.StargazerConnection, 'totalCount'>
+  ), forks: (
+    { __typename?: 'RepositoryConnection' }
+    & Pick<Types.RepositoryConnection, 'totalCount'>
+  ) }
+);
