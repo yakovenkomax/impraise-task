@@ -1,3 +1,4 @@
+import Text from 'components/Text/Text';
 import React from 'react';
 import classnames from 'classnames';
 
@@ -14,12 +15,14 @@ const LanguageTag: React.FC<Props> = (props) => {
   const languageTagClassNames = classnames(className, s.root);
 
   return (
-    <div className={languageTagClassNames}>
+    <Text block size="small" color="secondary" className={languageTagClassNames}>
       { !!color && (
-        <div className={s.icon} style={{ backgroundColor: color }} />
+        <div className={s.icon}>
+          <div className={s.circle} style={{ backgroundColor: color }} />
+        </div>
       )}
       { name }
-    </div>
+    </Text>
   );
 }
 

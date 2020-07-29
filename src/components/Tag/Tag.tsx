@@ -1,4 +1,5 @@
 import Icon, { IconType } from 'components/Icon/Icon';
+import Text from 'components/Text/Text';
 import React from 'react';
 import classnames from 'classnames';
 
@@ -20,10 +21,10 @@ const Tag: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className={tagClassNames}>
+    <Text block size="small" color="secondary" className={tagClassNames}>
       { !!icon && <Icon icon={icon} className={s.icon} /> }
       { children }
-    </div>
+    </Text>
   );
 }
 

@@ -72,16 +72,12 @@ const OrganizationPage = () => {
         </div>
         <div className={s.info}>
           <Text block size="h1" className={s.title}>{ name }</Text>
-          <Text block size="small" color="secondary" className={s.location}>
-            <Tag icon="location">
-              <Link fake>{ location }</Link>
-            </Tag>
-          </Text>
-          <Text block size="small" color="secondary">
-            <Tag icon="link">
-              <Link fake>{ websiteUrl }</Link>
-            </Tag>
-          </Text>
+          <Tag icon="location" className={s.location}>
+            <Link fake>{ location }</Link>
+          </Tag>
+          <Tag icon="link">
+            <Link fake>{ websiteUrl }</Link>
+          </Tag>
         </div>
       </div>
       <PinnedRepositoryList pinnedRepositoryList={pinnedRepositoryList} />
