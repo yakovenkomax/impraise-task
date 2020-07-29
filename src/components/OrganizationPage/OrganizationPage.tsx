@@ -1,15 +1,21 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
-import { GetOrganizationQuery, GetOrganizationQueryVariables } from 'types/operations.types';
+import { IGetOrganizationQuery, IGetOrganizationQueryVariables } from 'types/operations.types';
 import { useParams } from 'react-router-dom';
+import Text from 'components/Text/Text';
+import RepositoryList from 'components/RepositoryList/RepositoryList';
+import PinnedRepositoryList from 'components/PinnedRepositoryList/PinnedRepositoryList';
+
+import s from './OrganizationPage.module.css';
+import Icon from 'components/Icon/Icon';
 
 
 const GetOrganization = loader('src/operations/GetOrganization.graphql');
 
 const OrganizationPage = () => {
   const { login = '' } = useParams();
-  const { loading, data, error, fetchMore } = useQuery<GetOrganizationQuery, GetOrganizationQueryVariables>(
+  const { loading, data, error, fetchMore } = useQuery<IGetOrganizationQuery, IGetOrganizationQueryVariables>(
     GetOrganization,
     { variables: { login } }
   );
@@ -27,7 +33,7 @@ const OrganizationPage = () => {
     return null;
   }
 
-  const { name, location, websiteUrl, repositories } = organization;
+  const { name, location, avatarUrl, websiteUrl, repositories, pinnedItems } = organization;
 
   const loadMore = () => {
     fetchMore({
@@ -52,16 +58,36 @@ const OrganizationPage = () => {
     });
   }
 
+  const pinnedRepositoryList = pinnedItems.edges?.map(edge => {
+    if (edge?.node?.__typename !== 'Repository') {
+      return null;
+    }
+
+    return edge?.node;
+  }).filter(Boolean);
+
+  const repositoryList = repositories.edges?.map(edge => edge?.node).filter(Boolean);
+
   return (
-    <div className="OrganizationPage">
-      <div>Name: { name }</div>
-      <div>Location: { location }</div>
-      <div>WebsiteUrl: { websiteUrl }</div>
-      <ul>
-        { repositories.edges?.map(edge => (
-          <li key={edge?.node?.id}>{ edge?.node?.name }</li>
-        )) }
-      </ul>
+    <div className={s.root}>
+      <div className={s.header}>
+        <div className={s.avatar}>
+          <img className={s.image} src={avatarUrl} alt="" />
+        </div>
+        <div className={s.info}>
+          <Text block size="h1" className={s.title}>{ name }</Text>
+          <Text block size="small">
+            <Icon icon="location" />
+            { location }
+          </Text>
+          <Text block size="small">
+            <Icon icon="link" />
+            { websiteUrl }
+          </Text>
+        </div>
+      </div>
+      <PinnedRepositoryList pinnedRepositoryList={pinnedRepositoryList} />
+      <RepositoryList repositoryList={repositoryList} />
       <button onClick={loadMore}>Load more</button>
     </div>
   );

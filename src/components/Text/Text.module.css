@@ -1,0 +1,27 @@
+.root {
+
+}
+
+.block {
+  display: block;
+}
+
+.size-body {
+  font-size: 14px;
+}
+
+.size-h1 {
+  font-size: 21px;
+}
+
+.size-h2 {
+  font-size: 18px;
+}
+
+.size-h3 {
+  font-size: 16px;
+}
+
+.size-small {
+  font-size: 13px;
+}

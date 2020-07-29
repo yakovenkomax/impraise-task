@@ -3,10 +3,12 @@ import HomePage from 'components/HomePage/HomePage';
 import OrganizationPage from 'components/OrganizationPage/OrganizationPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import s from './App.module.css';
+
 
 const App = () => {
   return (
-    <div className="App">
+    <div className={s.root}>
       <Router>
         <Switch>
           <Route exact path="/">

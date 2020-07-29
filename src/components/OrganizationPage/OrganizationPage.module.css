@@ -1,0 +1,26 @@
+.root {
+  padding-top: var(--unit);
+}
+
+.header {
+  display: flex;
+  padding: var(--unit-5x);
+}
+
+.avatar {
+  width: 110px;
+  margin-right: var(--unit-3x);
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+}
+
+.info {
+
+}
+
+.title {
+  margin-bottom: var(--unit-2x);
+}
