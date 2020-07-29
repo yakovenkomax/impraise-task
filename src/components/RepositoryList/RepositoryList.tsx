@@ -35,9 +35,9 @@ const RepositoryList: React.FC<Props> = (props) => {
               </Text>
             </div>
             <div className={s.tags}>
-              <Tag icon="law" text={repository?.licenseInfo?.spdxId} />
-              <Tag icon="star" text={repository?.stargazers.totalCount} />
-              <Tag icon="gitBranch" text={repository?.forks.totalCount} />
+              <Tag icon="law">{ repository?.licenseInfo?.spdxId }</Tag>
+              <Tag icon="star">{ repository?.stargazers.totalCount }</Tag>
+              <Tag icon="gitBranch">{ repository?.forks.totalCount }</Tag>
               <Text>
                 { repository?.updatedAt }
               </Text>

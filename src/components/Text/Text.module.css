@@ -23,5 +23,13 @@
 }
 
 .size-small {
-  font-size: 13px;
+  font-size: 12px;
+}
+
+.color-primary {
+  color: var(--color-gray);
+}
+
+.color-secondary {
+  color: var(--color-gray-1);
 }

@@ -33,8 +33,8 @@ const PinnedRepositoryList: React.FC<Props> = (props) => {
             </div>
             <div className={s.tags}>
               <LanguageTag name={repository?.primaryLanguage?.name} color={repository?.primaryLanguage?.color} />
-              <Tag icon="star" text={repository?.stargazers.totalCount} />
-              <Tag icon="gitBranch" text={repository?.forks.totalCount} />
+              <Tag icon="star">{ repository?.stargazers.totalCount }</Tag>
+              <Tag icon="gitBranch">{ repository?.forks.totalCount }</Tag>
             </div>
           </li>
         ))}

@@ -1,0 +1,22 @@
+.root {
+  cursor: pointer;
+}
+
+.root:hover {
+  color: var(--color-blue);
+}
+
+.root:active,
+.root:focus {
+  color: var(--color-blue-1);
+}
+
+/* Requires 'position: relative' on one of its parent nodes */
+.cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}

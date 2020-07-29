@@ -1,6 +1,7 @@
+import Link from 'components/Link/Link';
+import Tag from 'components/Tag/Tag';
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Icon from 'components/Icon/Icon';
 import Text from 'components/Text/Text';
 import RepositoryList from 'components/RepositoryList/RepositoryList';
 import PinnedRepositoryList from 'components/PinnedRepositoryList/PinnedRepositoryList';
@@ -71,13 +72,15 @@ const OrganizationPage = () => {
         </div>
         <div className={s.info}>
           <Text block size="h1" className={s.title}>{ name }</Text>
-          <Text block size="small">
-            <Icon icon="location" />
-            { location }
+          <Text block size="small" color="secondary" className={s.location}>
+            <Tag icon="location">
+              <Link fake>{ location }</Link>
+            </Tag>
           </Text>
-          <Text block size="small">
-            <Icon icon="link" />
-            { websiteUrl }
+          <Text block size="small" color="secondary">
+            <Tag icon="link">
+              <Link fake>{ websiteUrl }</Link>
+            </Tag>
           </Text>
         </div>
       </div>

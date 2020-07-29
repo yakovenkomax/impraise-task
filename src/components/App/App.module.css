@@ -5,6 +5,6 @@
   margin: var(--unit-8x) auto;
   max-width: 800px; /* 1100 */
   background-color: var(--color-white);
-  border-radius: var(--border-radius-big);
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }

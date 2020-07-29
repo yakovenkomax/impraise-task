@@ -12,10 +12,10 @@
   --color-gray-2: #ebebeb;
   --color-gray-3: #f8f8f8;
   --color-blue: #63a9f4;
+  --color-blue-1: #2e81d9;
   --color-biege: #f7f5f4;
 
-  --border-radius-big: 5px;
-  --border-radius-medium: 3px;
+  --border-radius: 4px;
 
   --box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05);
 

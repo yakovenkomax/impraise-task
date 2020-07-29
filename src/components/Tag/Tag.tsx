@@ -6,23 +6,23 @@ import s from './Tag.module.css';
 
 
 type Props = {
-  text?: number | string | null,
   icon?: IconType,
   className?: string,
+  children?: React.ReactNode,
 }
 
 const Tag: React.FC<Props> = (props) => {
-  const { text, icon, className } = props;
+  const { icon, className, children } = props;
   const tagClassNames = classnames(className, s.root);
 
-  if (!text) {
+  if (!children) {
     return null;
   }
 
   return (
     <div className={tagClassNames}>
-      { !!icon && <Icon icon={icon} /> }
-      { text }
+      { !!icon && <Icon icon={icon} className={s.icon} /> }
+      { children }
     </div>
   );
 }
