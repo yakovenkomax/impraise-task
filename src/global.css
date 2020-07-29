@@ -2,15 +2,17 @@
   --unit: 5px;
   --unit-2x: calc(var(--unit) * 2);
   --unit-3x: calc(var(--unit) * 3);
+  --unit-4x: calc(var(--unit) * 4);
   --unit-5x: calc(var(--unit) * 5);
   --unit-6x: calc(var(--unit) * 6);
   --unit-8x: calc(var(--unit) * 8);
 
   --color-white: #fff;
   --color-gray: #2a2928;
-  --color-gray-1: #687788;
-  --color-gray-2: #ebebeb;
-  --color-gray-3: #f8f8f8;
+  --color-gray-1: #30475a;
+  --color-gray-2: #687788;
+  --color-gray-3: #ebebeb;
+  --color-gray-4: #f8f8f8;
   --color-blue: #63a9f4;
   --color-blue-1: #2e81d9;
   --color-biege: #f7f5f4;

@@ -4,11 +4,9 @@
 }
 
 .icon {
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1px;
   width: 16px;
   height: 18px;
   margin-right: var(--unit);

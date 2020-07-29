@@ -1,9 +1,7 @@
 .root {
-  box-sizing: border-box;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1px;
   width: 18px;
   height: 18px;
   color: currentColor;

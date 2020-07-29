@@ -21,7 +21,7 @@ const Tag: React.FC<Props> = (props) => {
   }
 
   return (
-    <Text block size="small" color="secondary" className={tagClassNames}>
+    <Text block size="small" className={tagClassNames}>
       { !!icon && <Icon icon={icon} className={s.icon} /> }
       { children }
     </Text>

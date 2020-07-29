@@ -9,12 +9,13 @@ type Props = {
   path?: string,
   href?: string,
   fake?: boolean,
+  cover?: boolean,
   className?: string,
   children?: React.ReactNode,
 }
 
 const Link: React.FC<Props> = (props) => {
-  const { path, href, fake, className, children } = props;
+  const { path, href, fake, cover, className, children } = props;
   const history = useHistory();
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -27,7 +28,7 @@ const Link: React.FC<Props> = (props) => {
     history.push(path);
   }
 
-  const linkClassNames = classnames(className, s.root);
+  const linkClassNames = classnames(className, s.root, { [s.cover]: Boolean(cover) });
 
   if (href) {
     return (

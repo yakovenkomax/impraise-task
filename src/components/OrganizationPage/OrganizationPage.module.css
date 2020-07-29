@@ -1,10 +1,10 @@
 .root {
-  padding-top: var(--unit);
+
 }
 
 .header {
   display: flex;
-  padding: var(--unit-5x);
+  padding: var(--unit-6x) var(--unit-5x) var(--unit-4x);
 }
 
 .avatar {

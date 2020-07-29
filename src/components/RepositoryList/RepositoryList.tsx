@@ -41,7 +41,10 @@ const RepositoryList: React.FC<Props> = (props) => {
               <Text>
                 { repository?.updatedAt }
               </Text>
-              <LanguageTag name={repository?.primaryLanguage?.name} color={repository?.primaryLanguage?.color} />
+              <LanguageTag
+                name={repository?.primaryLanguage?.name}
+                color={repository?.primaryLanguage?.color}
+              />
             </div>
           </li>
         ))}
