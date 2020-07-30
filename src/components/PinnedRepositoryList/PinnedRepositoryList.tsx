@@ -3,20 +3,26 @@ import Link from 'components/Link/Link';
 import Tag from 'components/Tag/Tag';
 import Text from 'components/Text/Text';
 import React from 'react';
-import { PinnedRepositoryListType } from './PinnedRepositoryList.types';
+import { PinnedItemListType, PinnedRepository, PinnedItem } from './PinnedRepositoryList.types';
 
 import s from './PinnedRepositoryList.module.css';
 
 type Props = {
-  pinnedRepositoryList: PinnedRepositoryListType,
+  pinnedItemsList?: PinnedItemListType,
 }
 
-const PinnedRepositoryList: React.FC<Props> = (props) => {
-  const { pinnedRepositoryList } = props;
+const isRepository = (node: PinnedItem): node is PinnedRepository => {
+  return node?.__typename === 'Repository';
+};
 
-  if (!pinnedRepositoryList?.length) {
+const PinnedRepositoryList: React.FC<Props> = (props) => {
+  const { pinnedItemsList } = props;
+
+  if (!pinnedItemsList?.length) {
     return null;
   }
+
+  const pinnedRepositoryList = pinnedItemsList.filter(isRepository);
 
   return (
     <div className={s.root}>

@@ -1,51 +1,16 @@
-import {
-  BranchProtectionRuleConnection, CodeOfConduct,
-  CommitCommentConnection,
-  DeployKeyConnection,
-  DeploymentConnection,
-  FundingLink,
-  GitObject,
-  Issue,
-  IssueConnection,
-  IssueOrPullRequest,
-  Label,
-  LabelConnection,
-  Language,
-  LanguageConnection,
-  License, Maybe,
-  Milestone,
-  MilestoneConnection,
-  PackageConnection,
-  PackageOwner,
-  ProjectConnection,
-  ProjectOwner,
-  PullRequest,
-  PullRequestConnection,
-  RefConnection,
-  Release,
-  ReleaseConnection,
-  Repository,
-  RepositoryCollaboratorConnection,
-  RepositoryConnection,
-  RepositoryInfo,
-  RepositoryLockReason,
-  RepositoryOwner,
-  RepositoryPermission,
-  RepositoryTopicConnection, RepositoryVulnerabilityAlertConnection,
-  Scalars,
-  StargazerConnection,
-  Starrable,
-  SubmoduleConnection,
-  Subscribable,
-  SubscriptionState,
-  UniformResourceLocatable,
-  UserConnection,
-  Ref,
-  Project,
-} from 'types/schema.types';
+import { RepositoryFieldsFragment } from 'types/operations.types';
+import * as Types from 'types/schema.types';
+import { License, Repository, } from 'types/schema.types';
 
-export type RepositoryListType = (({ __typename?: "Repository" } & Pick<Node & ProjectOwner & PackageOwner & Subscribable & Starrable & UniformResourceLocatable & RepositoryInfo & {
-  __typename?: "Repository"; assignableUsers: UserConnection; branchProtectionRules: BranchProtectionRuleConnection; codeOfConduct?: Maybe<CodeOfConduct>; collaborators?: Maybe<RepositoryCollaboratorConnection>; commitComments: CommitCommentConnection; createdAt: Scalars["DateTime"]; databaseId?: Maybe<Scalars["Int"]>; defaultBranchRef?: Maybe<Ref>; deleteBranchOnMerge: Scalars["Boolean"]; deployKeys: DeployKeyConnection; deployments: DeploymentConnection; description?: Maybe<Scalars["String"]>; descriptionHTML: Scalars["HTML"]; diskUsage?: Maybe<Scalars["Int"]>; forkCount: Scalars["Int"]; forks: RepositoryConnection; fundingLinks: Array<FundingLink>; hasIssuesEnabled: Scalars["Boolean"]; hasProjectsEnabled: Scalars["Boolean"]; hasWikiEnabled: Scalars["Boolean"]; homepageUrl?: Maybe<Scalars["URI"]>; id: Scalars["ID"]; isArchived: Scalars["Boolean"]; isDisabled: Scalars["Boolean"]; isEmpty: Scalars["Boolean"]; isFork: Scalars["Boolean"]; isLocked: Scalars["Boolean"]; isMirror: Scalars["Boolean"]; isPrivate: Scalars["Boolean"]; isTemplate: Scalars["Boolean"]; issue?: Maybe<Issue>; issueOrPullRequest?: Maybe<IssueOrPullRequest>; issues: IssueConnection; label?: Maybe<Label>; labels?: Maybe<LabelConnection>; languages?: Maybe<LanguageConnection>; licenseInfo?: Maybe<License>; lockReason?: Maybe<RepositoryLockReason>; mentionableUsers: UserConnection; mergeCommitAllowed: Scalars["Boolean"]; milestone?: Maybe<Milestone>; milestones?: Maybe<MilestoneConnection>; mirrorUrl?: Maybe<Scalars["URI"]>; name: Scalars["String"]; nameWithOwner: Scalars["String"]; object?: Maybe<GitObject>; openGraphImageUrl: Scalars["URI"]; owner: RepositoryOwner; packages: PackageConnection; parent?: Maybe<Repository>; primaryLanguage?: Maybe<Language>; project?: Maybe<Project>; projects: ProjectConnection; projectsResourcePath: Scalars["URI"]; projectsUrl: Scalars["URI"]; pullRequest?: Maybe<PullRequest>; pullRequests: PullRequestConnection; pushedAt?: Maybe<Scalars["DateTime"]>; rebaseMergeAllowed: Scalars["Boolean"]; ref?: Maybe<Ref>; refs?: Maybe<RefConnection>; release?: Maybe<Release>; releases: ReleaseConnection; repositoryTopics: RepositoryTopicConnection; resourcePath: Scalars["URI"]; shortDescriptionHTML: Scalars["HTML"]; squashMergeAllowed: Scalars["Boolean"]; sshUrl: Scalars["GitSSHRemote"]; stargazers: StargazerConnection; submodules: SubmoduleConnection; tempCloneToken?: Maybe<Scalars["String"]>; templateRepository?: Maybe<Repository>; updatedAt: Scalars["DateTime"]; url: Scalars["URI"]; usesCustomOpenGraphImage: Scalars["Boolean"]; viewerCanAdminister: Scalars["Boolean"]; viewerCanCreateProjects: Scalars["Boolean"]; viewerCanSubscribe: Scalars["Boolean"]; viewerCanUpdateTopics: Scalars["Boolean"]; viewerHasStarred: Scalars["Boolean"]; viewerPermission?: Maybe<RepositoryPermission>; viewerSubscription?: Maybe<SubscriptionState>; vulnerabilityAlerts?: Maybe<RepositoryVulnerabilityAlertConnection>; watchers: UserConnection
-}, "updatedAt"> & { parent?: Maybe<{ __typename?: "Repository" } & Pick<Repository, "nameWithOwner">>; licenseInfo?: Maybe<{ __typename?: "License" } & Pick<License, "spdxId">> } & Pick<Node & ProjectOwner & PackageOwner & Subscribable & Starrable & UniformResourceLocatable & RepositoryInfo & {
-  __typename?: "Repository"; assignableUsers: UserConnection; branchProtectionRules: BranchProtectionRuleConnection; codeOfConduct?: Maybe<CodeOfConduct>; collaborators?: Maybe<RepositoryCollaboratorConnection>; commitComments: CommitCommentConnection; createdAt: Scalars["DateTime"]; databaseId?: Maybe<Scalars["Int"]>; defaultBranchRef?: Maybe<Ref>; deleteBranchOnMerge: Scalars["Boolean"]; deployKeys: DeployKeyConnection; deployments: DeploymentConnection; description?: Maybe<Scalars["String"]>; descriptionHTML: Scalars["HTML"]; diskUsage?: Maybe<Scalars["Int"]>; forkCount: Scalars["Int"]; forks: RepositoryConnection; fundingLinks: Array<FundingLink>; hasIssuesEnabled: Scalars["Boolean"]; hasProjectsEnabled: Scalars["Boolean"]; hasWikiEnabled: Scalars["Boolean"]; homepageUrl?: Maybe<Scalars["URI"]>; id: Scalars["ID"]; isArchived: Scalars["Boolean"]; isDisabled: Scalars["Boolean"]; isEmpty: Scalars["Boolean"]; isFork: Scalars["Boolean"]; isLocked: Scalars["Boolean"]; isMirror: Scalars["Boolean"]; isPrivate: Scalars["Boolean"]; isTemplate: Scalars["Boolean"]; issue?: Maybe<Issue>; issueOrPullRequest?: Maybe<IssueOrPullRequest>; issues: IssueConnection; label?: Maybe<Label>; labels?: Maybe<LabelConnection>; languages?: Maybe<LanguageConnection>; licenseInfo?: Maybe<License>; lockReason?: Maybe<RepositoryLockReason>; mentionableUsers: UserConnection; mergeCommitAllowed: Scalars["Boolean"]; milestone?: Maybe<Milestone>; milestones?: Maybe<MilestoneConnection>; mirrorUrl?: Maybe<Scalars["URI"]>; name: Scalars["String"]; nameWithOwner: Scalars["String"]; object?: Maybe<GitObject>; openGraphImageUrl: Scalars["URI"]; owner: RepositoryOwner; packages: PackageConnection; parent?: Maybe<Repository>; primaryLanguage?: Maybe<Language>; project?: Maybe<Project>; projects: ProjectConnection; projectsResourcePath: Scalars["URI"]; projectsUrl: Scalars["URI"]; pullRequest?: Maybe<PullRequest>; pullRequests: PullRequestConnection; pushedAt?: Maybe<Scalars["DateTime"]>; rebaseMergeAllowed: Scalars["Boolean"]; ref?: Maybe<Ref>; refs?: Maybe<RefConnection>; release?: Maybe<Release>; releases: ReleaseConnection; repositoryTopics: RepositoryTopicConnection; resourcePath: Scalars["URI"]; shortDescriptionHTML: Scalars["HTML"]; squashMergeAllowed: Scalars["Boolean"]; sshUrl: Scalars["GitSSHRemote"]; stargazers: StargazerConnection; submodules: SubmoduleConnection; tempCloneToken?: Maybe<Scalars["String"]>; templateRepository?: Maybe<Repository>; updatedAt: Scalars["DateTime"]; url: Scalars["URI"]; usesCustomOpenGraphImage: Scalars["Boolean"]; viewerCanAdminister: Scalars["Boolean"]; viewerCanCreateProjects: Scalars["Boolean"]; viewerCanSubscribe: Scalars["Boolean"]; viewerCanUpdateTopics: Scalars["Boolean"]; viewerHasStarred: Scalars["Boolean"]; viewerPermission?: Maybe<RepositoryPermission>; viewerSubscription?: Maybe<SubscriptionState>; vulnerabilityAlerts?: Maybe<RepositoryVulnerabilityAlertConnection>; watchers: UserConnection
-}, "id" | "name" | "description"> & { primaryLanguage?: Maybe<{ __typename?: "Language" } & Pick<Language, "color" | "name">>; stargazers: { __typename?: "StargazerConnection" } & Pick<StargazerConnection, "totalCount">; forks: { __typename?: "RepositoryConnection" } & Pick<RepositoryConnection, "totalCount"> }) | null | undefined)[] | undefined
+export type RepositoryListType = Types.Maybe<Array<Types.Maybe<(
+  { __typename?: 'Repository' }
+  & Pick<Types.Repository, 'updatedAt'>
+  & { parent?: Types.Maybe<(
+    { __typename?: 'Repository' }
+    & Pick<Types.Repository, 'nameWithOwner'>
+    )>, licenseInfo?: Types.Maybe<(
+    { __typename?: 'License' }
+    & Pick<Types.License, 'spdxId'>
+    )> }
+  & RepositoryFieldsFragment
+  )>>>

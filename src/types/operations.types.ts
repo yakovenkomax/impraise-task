@@ -14,29 +14,23 @@ export type GetOrganizationQuery = (
     & Pick<Types.Organization, 'name' | 'location' | 'avatarUrl' | 'websiteUrl'>
     & { pinnedItems: (
       { __typename?: 'PinnableItemConnection' }
-      & { edges?: Types.Maybe<Array<Types.Maybe<(
-        { __typename?: 'PinnableItemEdge' }
-        & { node?: Types.Maybe<{ __typename?: 'Gist' } | (
-          { __typename?: 'Repository' }
-          & RepositoryFieldsFragment
-        )> }
+      & { nodes?: Types.Maybe<Array<Types.Maybe<{ __typename?: 'Gist' } | (
+        { __typename?: 'Repository' }
+        & RepositoryFieldsFragment
       )>>> }
     ), repositories: (
       { __typename?: 'RepositoryConnection' }
-      & { edges?: Types.Maybe<Array<Types.Maybe<(
-        { __typename?: 'RepositoryEdge' }
-        & { node?: Types.Maybe<(
+      & { nodes?: Types.Maybe<Array<Types.Maybe<(
+        { __typename?: 'Repository' }
+        & Pick<Types.Repository, 'updatedAt'>
+        & { parent?: Types.Maybe<(
           { __typename?: 'Repository' }
-          & Pick<Types.Repository, 'updatedAt'>
-          & { parent?: Types.Maybe<(
-            { __typename?: 'Repository' }
-            & Pick<Types.Repository, 'nameWithOwner'>
-          )>, licenseInfo?: Types.Maybe<(
-            { __typename?: 'License' }
-            & Pick<Types.License, 'spdxId'>
-          )> }
-          & RepositoryFieldsFragment
+          & Pick<Types.Repository, 'nameWithOwner'>
+        )>, licenseInfo?: Types.Maybe<(
+          { __typename?: 'License' }
+          & Pick<Types.License, 'spdxId'>
         )> }
+        & RepositoryFieldsFragment
       )>>>, pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<Types.PageInfo, 'hasNextPage' | 'endCursor'>

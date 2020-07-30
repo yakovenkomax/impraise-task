@@ -1,3 +1,4 @@
+import Button from 'components/Button/Button';
 import FriendlyDate from 'components/FriendlyDate/FriendlyDate';
 import LanguageTag from 'components/LanguageTag/LanguageTag';
 import Link from 'components/Link/Link';
@@ -9,11 +10,13 @@ import s from './RepositoryList.module.css';
 import Tag from 'components/Tag/Tag';
 
 type Props = {
-  repositoryList: RepositoryListType,
+  repositoryList?: RepositoryListType,
+  showLoadMore?: boolean,
+  onLoadMore?: () => void,
 }
 
 const RepositoryList: React.FC<Props> = (props) => {
-  const { repositoryList } = props;
+  const { repositoryList, showLoadMore, onLoadMore } = props;
 
   if (!repositoryList?.length) {
     return null;
@@ -31,7 +34,9 @@ const RepositoryList: React.FC<Props> = (props) => {
               </Text>
             </Link>
             <Text block size="small">
-              { repository?.parent?.nameWithOwner }
+              <Link fake className={s.parent}>
+                { repository?.parent?.nameWithOwner }
+              </Link>
             </Text>
             <Text block className={s.description}>
               { repository?.description }
@@ -70,6 +75,11 @@ const RepositoryList: React.FC<Props> = (props) => {
           </li>
         ))}
       </ul>
+      { showLoadMore && (
+        <div className={s.pagination}>
+          <Button text="Load more" onClick={onLoadMore} className={s.loadMore}/>
+        </div>
+      )}
     </div>
   );
 }

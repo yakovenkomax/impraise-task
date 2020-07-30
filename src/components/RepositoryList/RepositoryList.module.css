@@ -20,6 +20,10 @@
   padding: var(--unit-3x) var(--unit-5x);
 }
 
+.item:last-child {
+  border-bottom: 1px solid var(--color-gray-3);
+}
+
 .item:hover {
   background-color: var(--color-gray-4);
 }
@@ -27,6 +31,10 @@
 .item:active,
 .item:focus {
   background-color: var(--color-gray-3);
+}
+
+.parent {
+  position: relative;
 }
 
 .description {
@@ -44,4 +52,14 @@
 
 .tag:not(:last-child) {
   margin-right: var(--unit-4x);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  margin-top: var(--unit-5x);
+}
+
+.loadMore {
+  margin: auto;
 }

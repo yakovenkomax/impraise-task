@@ -25,7 +25,7 @@ const LoadingPlaceholder: React.FC<Props> = (props) => {
       <div className={s.repositories}>
         <GradientPlaceholder className={s.repositoryListTitle} />
         <ul className={s.repositoryList}>
-          { [...Array(6)].map((item, index) => (
+          { [...Array(5)].map((item, index) => (
             <li key={index} className={s.repositoryListItem}>
               <GradientPlaceholder className={s.repositoryTitle} />
               <GradientPlaceholder className={s.repositoryDescription} />

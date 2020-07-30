@@ -29,25 +29,21 @@ export const GetOrganizationDocument = gql`
     avatarUrl
     websiteUrl
     pinnedItems(types: REPOSITORY, first: 3) {
-      edges {
-        node {
-          ... on Repository {
-            ...repositoryFields
-          }
+      nodes {
+        ... on Repository {
+          ...repositoryFields
         }
       }
     }
     repositories(first: 5, after: $cursor) {
-      edges {
-        node {
-          ...repositoryFields
-          updatedAt
-          parent {
-            nameWithOwner
-          }
-          licenseInfo {
-            spdxId
-          }
+      nodes {
+        ...repositoryFields
+        updatedAt
+        parent {
+          nameWithOwner
+        }
+        licenseInfo {
+          spdxId
         }
       }
       pageInfo {

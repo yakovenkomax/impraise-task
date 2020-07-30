@@ -1,0 +1,22 @@
+.root {
+  appearance: none;
+  padding: var(--unit) var(--unit-2x);
+  border: 1px solid var(--color-biege-1);
+  outline: 0;
+  border-radius: var(--border-radius);
+  background-color: var(--color-white);
+  font-size: var(--font-size);
+  color: var(--color-gray-1);
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.root:hover {
+  background-color: var(--color-gray-4);
+}
+
+.root:active {
+  color: var(--color-white);
+  border-color: var(--color-blue);
+  background-color: var(--color-blue);
+}

@@ -24,26 +24,27 @@ const OrganizationPage = () => {
 
   const { organization } = data;
   const { name, location, avatarUrl, websiteUrl, repositories, pinnedItems } = organization;
+  const { pageInfo } = repositories;
+  const { hasNextPage } = pageInfo;
 
   if (name) {
     document.title = name;
   }
 
-  const loadMore = () => {
+  const handleLoadMore = () => {
+    const cursor = data?.organization?.repositories.pageInfo.endCursor;
+
     fetchMore({
-      variables: {
-        login,
-        cursor: data?.organization?.repositories.pageInfo.endCursor,
-      },
+      variables: { login, cursor },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         if (!fetchMoreResult) {
           return previousResult;
         }
 
-        if (fetchMoreResult?.organization?.repositories.edges) {
-          fetchMoreResult.organization.repositories.edges = [
-            ...previousResult?.organization?.repositories.edges || [],
-            ...fetchMoreResult.organization.repositories.edges,
+        if (fetchMoreResult?.organization?.repositories.nodes) {
+          fetchMoreResult.organization.repositories.nodes = [
+            ...previousResult?.organization?.repositories.nodes || [],
+            ...fetchMoreResult.organization.repositories.nodes,
           ];
         }
 
@@ -51,16 +52,6 @@ const OrganizationPage = () => {
       },
     });
   }
-
-  const pinnedRepositoryList = pinnedItems.edges?.map(edge => {
-    if (edge?.node?.__typename !== 'Repository') {
-      return null;
-    }
-
-    return edge?.node;
-  }).filter(Boolean);
-
-  const repositoryList = repositories.edges?.map(edge => edge?.node).filter(Boolean);
 
   return (
     <div className={s.root}>
@@ -80,9 +71,12 @@ const OrganizationPage = () => {
           </Tag>
         </div>
       </div>
-      <PinnedRepositoryList pinnedRepositoryList={pinnedRepositoryList} />
-      <RepositoryList repositoryList={repositoryList} />
-      <button onClick={loadMore}>Load more</button>
+      <PinnedRepositoryList pinnedItemsList={pinnedItems.nodes} />
+      <RepositoryList
+        repositoryList={repositories.nodes}
+        showLoadMore={hasNextPage}
+        onLoadMore={handleLoadMore}
+      />
     </div>
   );
 }
