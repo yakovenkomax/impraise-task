@@ -12,7 +12,7 @@
 .item {
   position: relative;
   box-sizing: border-box;
-  flex-basis: 100%;
+  width: 33.33%;
   display: flex;
   flex-direction: column;
   padding: var(--unit-3x) var(--unit-4x);
@@ -53,4 +53,19 @@
 
 .tag:not(:last-child) {
   margin-right: var(--unit-4x);
+}
+
+@media all and (max-width: 1000px) {
+  .list {
+    flex-wrap: wrap;
+  }
+
+  .item {
+    width: 100%;
+  }
+
+  .item:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: var(--unit-5x);
+  }
 }

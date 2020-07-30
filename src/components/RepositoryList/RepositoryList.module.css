@@ -43,15 +43,19 @@
 
 .tags {
   display: flex;
-  margin-top: var(--unit-4x);
+  flex-wrap: wrap;
 }
 
-.tagLink {
-  position: relative;
+.tag {
+  margin-top: var(--unit-4x);
 }
 
 .tag:not(:last-child) {
   margin-right: var(--unit-4x);
+}
+
+.tagLink {
+  position: relative;
 }
 
 .pagination {

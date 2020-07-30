@@ -11,12 +11,13 @@ import Tag from 'components/Tag/Tag';
 
 type Props = {
   repositoryList?: RepositoryListType,
+  isLoadingMore?: boolean,
   showLoadMore?: boolean,
   onLoadMore?: () => void,
 }
 
 const RepositoryList: React.FC<Props> = (props) => {
-  const { repositoryList, showLoadMore, onLoadMore } = props;
+  const { repositoryList, showLoadMore, onLoadMore, isLoadingMore } = props;
 
   if (!repositoryList?.length) {
     return null;
@@ -33,11 +34,13 @@ const RepositoryList: React.FC<Props> = (props) => {
                 { repository?.name }
               </Text>
             </Link>
-            <Text block size="small">
-              <Link fake className={s.parent}>
-                { repository?.parent?.nameWithOwner }
-              </Link>
-            </Text>
+            { repository?.parent?.nameWithOwner && (
+              <Text block size="small">
+                <Link fake className={s.parent}>
+                  { repository?.parent?.nameWithOwner }
+                </Link>
+              </Text>
+            )}
             <Text block className={s.description}>
               { repository?.description }
             </Text>
@@ -77,7 +80,7 @@ const RepositoryList: React.FC<Props> = (props) => {
       </ul>
       { showLoadMore && (
         <div className={s.pagination}>
-          <Button text="Load more" onClick={onLoadMore} className={s.loadMore}/>
+          <Button text={isLoadingMore ? 'Loading...' : 'Load more'} onClick={onLoadMore} className={s.loadMore}/>
         </div>
       )}
     </div>

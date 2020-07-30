@@ -1,3 +1,4 @@
+import { NetworkStatus } from '@apollo/client';
 import LoadingPlaceholder from 'components/LoadingPlaceholder/LoadingPlaceholder';
 import Tag from 'components/Tag/Tag';
 import React from 'react';
@@ -13,13 +14,16 @@ import s from './OrganizationPage.module.css';
 
 const OrganizationPage = () => {
   const { login } = useParams();
-  const { loading, data, error, fetchMore } = useGetOrganizationQuery({
+  const { loading, data, error, fetchMore, networkStatus } = useGetOrganizationQuery({
     skip: !login,
     variables: { login },
+    notifyOnNetworkStatusChange: true,
   });
 
+  const isLoadingMore = networkStatus === NetworkStatus.fetchMore;
+
   if (!login || typeof login !== 'string') return null; // will redirect to HomePage by router
-  if (loading) return <LoadingPlaceholder />;
+  if (loading && !isLoadingMore) return <LoadingPlaceholder />;
   if (error || !data?.organization) return <ErrorPlaceholder />;
 
   const { organization } = data;
@@ -75,6 +79,7 @@ const OrganizationPage = () => {
       <RepositoryList
         repositoryList={repositories.nodes}
         showLoadMore={hasNextPage}
+        isLoadingMore={isLoadingMore}
         onLoadMore={handleLoadMore}
       />
     </div>

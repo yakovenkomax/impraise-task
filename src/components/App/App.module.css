@@ -2,7 +2,8 @@
   box-sizing: border-box;
   min-height: 100%;
   margin: auto;
-  padding: var(--unit-8x) 0;
+  padding: var(--unit-8x) var(--unit-4x);
+  min-width: 375px;
   max-width: 1100px;
   display: flex;
   flex-direction: column;
