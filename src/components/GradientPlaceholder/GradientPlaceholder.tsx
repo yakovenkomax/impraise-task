@@ -3,18 +3,15 @@ import classnames from 'classnames';
 
 import s from './GradientPlaceholder.module.css';
 
-
 type Props = {
-  className?: string,
-}
+  className?: string;
+};
 
 const GradientPlaceholder: React.FC<Props> = (props) => {
   const { className } = props;
   const rootClassNames = classnames(className, s.root);
 
-  return (
-    <div className={rootClassNames} />
-  );
-}
+  return <div className={rootClassNames} />;
+};
 
 export default GradientPlaceholder;

@@ -4,12 +4,11 @@ import classnames from 'classnames';
 
 import s from './LanguageTag.module.css';
 
-
 type Props = {
-  name?: string,
-  color?: string | null,
-  className?: string,
-}
+  name?: string;
+  color?: string | null;
+  className?: string;
+};
 
 const LanguageTag: React.FC<Props> = (props) => {
   const { name, color, className } = props;
@@ -21,14 +20,14 @@ const LanguageTag: React.FC<Props> = (props) => {
 
   return (
     <Text block size="small" className={rootClassNames}>
-      { !!color && (
+      {!!color && (
         <div className={s.icon}>
           <div className={s.circle} style={{ backgroundColor: color }} />
         </div>
       )}
-      { name }
+      {name}
     </Text>
   );
-}
+};
 
 export default LanguageTag;

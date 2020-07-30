@@ -3,27 +3,27 @@ schema:
   - https://api.github.com/graphql:
       headers:
         Authorization: Bearer ${REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}
-documents: "src/operations/*.graphql"
+documents: 'src/operations/*.graphql'
 generates:
   src/types/schema.types.ts:
     plugins:
-      - "typescript"
+      - 'typescript'
   src/types/operations.types.ts:
     preset: import-types
     presetConfig:
       typesPath: ./schema.types
     plugins:
-      - "typescript-operations"
+      - 'typescript-operations'
   src/types/apollo.hooks.tsx:
     preset: import-types
     presetConfig:
       typesPath: ./operations.types
     plugins:
-      - "typescript-react-apollo"
+      - 'typescript-react-apollo'
     config:
       withHooks: true
       withComponent: false
       withHOC: false
       reactApolloVersion: 3
-      gqlImport: "@apollo/client#gql"
+      gqlImport: '@apollo/client#gql'
       addDocBlocks: true

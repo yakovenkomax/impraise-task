@@ -6,13 +6,12 @@ import Link, { LinkProps } from 'components/Link/Link';
 
 import s from './Tag.module.css';
 
-
 type Props = {
-  icon?: IconType,
-  className?: string,
-  children?: React.ReactNode,
-  linkProps?: LinkProps,
-}
+  icon?: IconType;
+  className?: string;
+  children?: React.ReactNode;
+  linkProps?: LinkProps;
+};
 
 const Tag: React.FC<Props> = (props) => {
   const { icon, className, linkProps, children } = props;
@@ -24,22 +23,22 @@ const Tag: React.FC<Props> = (props) => {
 
   const renderContent = () => (
     <div className={s.content}>
-      { !!icon && <Icon icon={icon} className={s.icon} /> }
-      { children }
+      {!!icon && <Icon icon={icon} className={s.icon} />}
+      {children}
     </div>
-  )
+  );
 
   return (
     <Text block size="small" className={rootClassNames}>
-      { linkProps ? (
+      {linkProps ? (
         <Link block {...linkProps}>
-          { renderContent() }
+          {renderContent()}
         </Link>
       ) : (
         renderContent()
       )}
     </Text>
   );
-}
+};
 
 export default Tag;

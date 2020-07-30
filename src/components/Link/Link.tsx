@@ -4,22 +4,30 @@ import classnames from 'classnames';
 
 import s from './Link.module.css';
 
-
 type Props = {
-  path?: string,
-  href?: string,
-  fake?: boolean,
-  cover?: boolean,
-  block?: boolean,
-  className?: string,
-  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void,
-  children?: React.ReactNode,
-}
+  path?: string;
+  href?: string;
+  fake?: boolean;
+  cover?: boolean;
+  block?: boolean;
+  className?: string;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  children?: React.ReactNode;
+};
 
 export type LinkProps = Props;
 
 const Link: React.FC<Props> = (props) => {
-  const { path, href, fake, cover, block, className, onClick, children } = props;
+  const {
+    path,
+    href,
+    fake,
+    cover,
+    block,
+    className,
+    onClick,
+    children,
+  } = props;
   const history = useHistory();
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -39,7 +47,7 @@ const Link: React.FC<Props> = (props) => {
     }
 
     history.push(path);
-  }
+  };
 
   const rootClassNames = classnames(className, s.root, {
     [s.cover]: Boolean(cover),
@@ -49,16 +57,16 @@ const Link: React.FC<Props> = (props) => {
   if (href) {
     return (
       <a className={rootClassNames} href={href}>
-        { children }
+        {children}
       </a>
     );
   }
 
   return (
     <div className={rootClassNames} onClick={handleClick}>
-      { children }
+      {children}
     </div>
   );
-}
+};
 
 export default Link;

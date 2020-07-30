@@ -5,10 +5,9 @@ import classnames from 'classnames';
 
 import s from 'components/HomePage/HomePage.module.css';
 
-
 type Props = {
-  className?: string,
-}
+  className?: string;
+};
 
 const HomePage: React.FC<Props> = (props) => {
   const { className } = props;
@@ -16,17 +15,17 @@ const HomePage: React.FC<Props> = (props) => {
 
   return (
     <div className={rootClassNames}>
-      <Text size="h1" className={s.title}>GitHub Organizations Explorer</Text>
+      <Text size="h1" className={s.title}>
+        GitHub Organizations Explorer
+      </Text>
       <Text>
-        Enter the organization login after "/" in the address bar, ex.
-        {' '}
+        Enter the organization login after "/" in the address bar, ex.{' '}
         <Link path="/github">"github"</Link>
         {' or '}
-        <Link path="/impraise">"impraise"</Link>
-        .
+        <Link path="/impraise">"impraise"</Link>.
       </Text>
     </div>
   );
-}
+};
 
 export default HomePage;

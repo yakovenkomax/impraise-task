@@ -8,7 +8,6 @@ import { ReactComponent as star } from './icons/star.svg';
 
 import s from './Icon.module.css';
 
-
 const iconList = {
   gitBranch,
   law,
@@ -20,9 +19,9 @@ const iconList = {
 export type IconType = keyof typeof iconList;
 
 type Props = {
-  icon: IconType,
-  className?: string,
-}
+  icon: IconType;
+  className?: string;
+};
 
 const Icon: React.FC<Props> = (props) => {
   const { icon, className } = props;
@@ -34,6 +33,6 @@ const Icon: React.FC<Props> = (props) => {
       <IconComponent />
     </div>
   );
-}
+};
 
 export default Icon;

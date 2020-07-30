@@ -5,55 +5,56 @@ import * as ApolloReactCommon from '@apollo/client';
 import * as ApolloReactHooks from '@apollo/client';
 
 export const RepositoryFieldsFragmentDoc = gql`
-    fragment repositoryFields on Repository {
-  id
-  name
-  description
-  primaryLanguage {
-    color
+  fragment repositoryFields on Repository {
+    id
     name
+    description
+    primaryLanguage {
+      color
+      name
+    }
+    stargazers {
+      totalCount
+    }
+    forks {
+      totalCount
+    }
   }
-  stargazers {
-    totalCount
-  }
-  forks {
-    totalCount
-  }
-}
-    `;
+`;
 export const GetOrganizationDocument = gql`
-    query GetOrganization($login: String!, $cursor: String) {
-  organization(login: $login) {
-    name
-    location
-    avatarUrl
-    websiteUrl
-    pinnedItems(types: REPOSITORY, first: 3) {
-      nodes {
-        ... on Repository {
+  query GetOrganization($login: String!, $cursor: String) {
+    organization(login: $login) {
+      name
+      location
+      avatarUrl
+      websiteUrl
+      pinnedItems(types: REPOSITORY, first: 3) {
+        nodes {
+          ... on Repository {
+            ...repositoryFields
+          }
+        }
+      }
+      repositories(first: 5, after: $cursor) {
+        nodes {
           ...repositoryFields
+          updatedAt
+          parent {
+            nameWithOwner
+          }
+          licenseInfo {
+            spdxId
+          }
         }
-      }
-    }
-    repositories(first: 5, after: $cursor) {
-      nodes {
-        ...repositoryFields
-        updatedAt
-        parent {
-          nameWithOwner
+        pageInfo {
+          hasNextPage
+          endCursor
         }
-        licenseInfo {
-          spdxId
-        }
-      }
-      pageInfo {
-        hasNextPage
-        endCursor
       }
     }
   }
-}
-    ${RepositoryFieldsFragmentDoc}`;
+  ${RepositoryFieldsFragmentDoc}
+`;
 
 /**
  * __useGetOrganizationQuery__
@@ -72,12 +73,35 @@ export const GetOrganizationDocument = gql`
  *   },
  * });
  */
-export function useGetOrganizationQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<Types.GetOrganizationQuery, Types.GetOrganizationQueryVariables>) {
-        return ApolloReactHooks.useQuery<Types.GetOrganizationQuery, Types.GetOrganizationQueryVariables>(GetOrganizationDocument, baseOptions);
-      }
-export function useGetOrganizationLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<Types.GetOrganizationQuery, Types.GetOrganizationQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<Types.GetOrganizationQuery, Types.GetOrganizationQueryVariables>(GetOrganizationDocument, baseOptions);
-        }
-export type GetOrganizationQueryHookResult = ReturnType<typeof useGetOrganizationQuery>;
-export type GetOrganizationLazyQueryHookResult = ReturnType<typeof useGetOrganizationLazyQuery>;
-export type GetOrganizationQueryResult = ApolloReactCommon.QueryResult<Types.GetOrganizationQuery, Types.GetOrganizationQueryVariables>;
+export function useGetOrganizationQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    Types.GetOrganizationQuery,
+    Types.GetOrganizationQueryVariables
+  >
+) {
+  return ApolloReactHooks.useQuery<
+    Types.GetOrganizationQuery,
+    Types.GetOrganizationQueryVariables
+  >(GetOrganizationDocument, baseOptions);
+}
+export function useGetOrganizationLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    Types.GetOrganizationQuery,
+    Types.GetOrganizationQueryVariables
+  >
+) {
+  return ApolloReactHooks.useLazyQuery<
+    Types.GetOrganizationQuery,
+    Types.GetOrganizationQueryVariables
+  >(GetOrganizationDocument, baseOptions);
+}
+export type GetOrganizationQueryHookResult = ReturnType<
+  typeof useGetOrganizationQuery
+>;
+export type GetOrganizationLazyQueryHookResult = ReturnType<
+  typeof useGetOrganizationLazyQuery
+>;
+export type GetOrganizationQueryResult = ApolloReactCommon.QueryResult<
+  Types.GetOrganizationQuery,
+  Types.GetOrganizationQueryVariables
+>;

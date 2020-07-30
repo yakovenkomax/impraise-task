@@ -9,13 +9,12 @@ import { RepositoryListType } from 'components/RepositoryList/RepositoryList.typ
 
 import s from './RepositoryList.module.css';
 
-
 type Props = {
-  repositoryList?: RepositoryListType,
-  isLoadingMore?: boolean,
-  showLoadMore?: boolean,
-  onLoadMore?: () => void,
-}
+  repositoryList?: RepositoryListType;
+  isLoadingMore?: boolean;
+  showLoadMore?: boolean;
+  onLoadMore?: () => void;
+};
 
 const RepositoryList: React.FC<Props> = (props) => {
   const { repositoryList, showLoadMore, onLoadMore, isLoadingMore } = props;
@@ -26,24 +25,26 @@ const RepositoryList: React.FC<Props> = (props) => {
 
   return (
     <div className={s.root}>
-      <Text block size="h2" className={s.title}>Repositories</Text>
+      <Text block size="h2" className={s.title}>
+        Repositories
+      </Text>
       <ul className={s.list}>
-        { repositoryList.map(repository => (
+        {repositoryList.map((repository) => (
           <li key={repository?.id} className={s.item}>
             <Link fake cover>
               <Text block size="h3">
-                { repository?.name }
+                {repository?.name}
               </Text>
             </Link>
-            { repository?.parent?.nameWithOwner && (
+            {repository?.parent?.nameWithOwner && (
               <Text block size="small">
                 <Link fake className={s.parent}>
-                  { repository?.parent?.nameWithOwner }
+                  {repository?.parent?.nameWithOwner}
                 </Link>
               </Text>
             )}
             <Text block className={s.description}>
-              { repository?.description }
+              {repository?.description}
             </Text>
             <div className={s.tags}>
               <LanguageTag
@@ -56,20 +57,17 @@ const RepositoryList: React.FC<Props> = (props) => {
                 className={s.tag}
                 linkProps={{ fake: true, className: s.tagLink }}
               >
-                { repository?.stargazers.totalCount }
+                {repository?.stargazers.totalCount}
               </Tag>
               <Tag
                 icon="gitBranch"
                 className={s.tag}
                 linkProps={{ fake: true, className: s.tagLink }}
               >
-                { repository?.forks.totalCount }
+                {repository?.forks.totalCount}
               </Tag>
-              <Tag
-                icon="law"
-                className={s.tag}
-              >
-                { repository?.licenseInfo?.spdxId }
+              <Tag icon="law" className={s.tag}>
+                {repository?.licenseInfo?.spdxId}
               </Tag>
               <Text size="small" className={s.tag}>
                 Updated
@@ -79,13 +77,17 @@ const RepositoryList: React.FC<Props> = (props) => {
           </li>
         ))}
       </ul>
-      { showLoadMore && (
+      {showLoadMore && (
         <div className={s.pagination}>
-          <Button text={isLoadingMore ? 'Loading...' : 'Load more'} onClick={onLoadMore} className={s.loadMore}/>
+          <Button
+            text={isLoadingMore ? 'Loading...' : 'Load more'}
+            onClick={onLoadMore}
+            className={s.loadMore}
+          />
         </div>
       )}
     </div>
   );
-}
+};
 
 export default RepositoryList;

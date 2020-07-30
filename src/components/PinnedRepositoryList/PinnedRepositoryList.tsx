@@ -3,14 +3,17 @@ import Tag from 'components/Tag/Tag';
 import Text from 'components/Text/Text';
 import Link from 'components/Link/Link';
 import LanguageTag from 'components/LanguageTag/LanguageTag';
-import { PinnedItemListType, PinnedRepository, PinnedItem } from './PinnedRepositoryList.types';
+import {
+  PinnedItemListType,
+  PinnedRepository,
+  PinnedItem,
+} from './PinnedRepositoryList.types';
 
 import s from './PinnedRepositoryList.module.css';
 
-
 type Props = {
-  pinnedItemsList?: PinnedItemListType,
-}
+  pinnedItemsList?: PinnedItemListType;
+};
 
 const isRepository = (node: PinnedItem): node is PinnedRepository => {
   return node?.__typename === 'Repository';
@@ -27,18 +30,20 @@ const PinnedRepositoryList: React.FC<Props> = (props) => {
 
   return (
     <div className={s.root}>
-      <Text block size="h2">Pinned repositories</Text>
+      <Text block size="h2">
+        Pinned repositories
+      </Text>
       <ul className={s.list}>
-        { pinnedRepositoryList.map(repository => (
+        {pinnedRepositoryList.map((repository) => (
           <li key={repository?.id} className={s.item}>
             <div className={s.main}>
               <Link fake cover>
                 <Text block size="h3">
-                  { repository?.name }
+                  {repository?.name}
                 </Text>
               </Link>
               <Text block className={s.description}>
-                { repository?.description }
+                {repository?.description}
               </Text>
             </div>
             <div className={s.tags}>
@@ -52,14 +57,14 @@ const PinnedRepositoryList: React.FC<Props> = (props) => {
                 className={s.tag}
                 linkProps={{ fake: true, className: s.tagLink }}
               >
-                { repository?.stargazers.totalCount }
+                {repository?.stargazers.totalCount}
               </Tag>
               <Tag
                 icon="gitBranch"
                 className={s.tag}
                 linkProps={{ fake: true, className: s.tagLink }}
               >
-                { repository?.forks.totalCount }
+                {repository?.forks.totalCount}
               </Tag>
             </div>
           </li>
@@ -67,6 +72,6 @@ const PinnedRepositoryList: React.FC<Props> = (props) => {
       </ul>
     </div>
   );
-}
+};
 
 export default PinnedRepositoryList;

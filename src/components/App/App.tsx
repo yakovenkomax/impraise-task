@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import s from './App.module.css';
 
-
 const App = () => {
   return (
     <div className={s.root}>
@@ -27,6 +26,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

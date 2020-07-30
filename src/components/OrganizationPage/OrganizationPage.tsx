@@ -11,10 +11,15 @@ import { useGetOrganizationQuery } from 'types/apollo.hooks';
 
 import s from './OrganizationPage.module.css';
 
-
 const OrganizationPage = () => {
   const { login } = useParams();
-  const { loading, data, error, fetchMore, networkStatus } = useGetOrganizationQuery({
+  const {
+    loading,
+    data,
+    error,
+    fetchMore,
+    networkStatus,
+  } = useGetOrganizationQuery({
     skip: !login,
     variables: { login },
     notifyOnNetworkStatusChange: true,
@@ -27,7 +32,14 @@ const OrganizationPage = () => {
   if (error || !data?.organization) return <ErrorPlaceholder />;
 
   const { organization } = data;
-  const { name, location, avatarUrl, websiteUrl, repositories, pinnedItems } = organization;
+  const {
+    name,
+    location,
+    avatarUrl,
+    websiteUrl,
+    repositories,
+    pinnedItems,
+  } = organization;
   const { pageInfo } = repositories;
   const { hasNextPage } = pageInfo;
 
@@ -47,7 +59,7 @@ const OrganizationPage = () => {
 
         if (fetchMoreResult?.organization?.repositories.nodes) {
           fetchMoreResult.organization.repositories.nodes = [
-            ...previousResult?.organization?.repositories.nodes || [],
+            ...(previousResult?.organization?.repositories.nodes || []),
             ...fetchMoreResult.organization.repositories.nodes,
           ];
         }
@@ -55,23 +67,25 @@ const OrganizationPage = () => {
         return fetchMoreResult;
       },
     });
-  }
+  };
 
   return (
     <div className={s.root}>
       <div className={s.header}>
-        { avatarUrl && (
+        {avatarUrl && (
           <div className={s.avatar}>
             <img className={s.image} src={avatarUrl} alt="" />
           </div>
         )}
         <div>
-          <Text block size="h1">{ name }</Text>
+          <Text block size="h1">
+            {name}
+          </Text>
           <Tag icon="location" className={s.location}>
-            { location }
+            {location}
           </Tag>
           <Tag icon="link" linkProps={{ fake: true }} className={s.websiteUrl}>
-            { websiteUrl }
+            {websiteUrl}
           </Tag>
         </div>
       </div>
@@ -84,6 +98,6 @@ const OrganizationPage = () => {
       />
     </div>
   );
-}
+};
 
 export default OrganizationPage;

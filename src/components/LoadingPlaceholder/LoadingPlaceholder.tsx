@@ -4,10 +4,9 @@ import GradientPlaceholder from 'components/GradientPlaceholder/GradientPlacehol
 
 import s from './LoadingPlaceholder.module.css';
 
-
 type Props = {
-  className?: string,
-}
+  className?: string;
+};
 
 const LoadingPlaceholder: React.FC<Props> = (props) => {
   const { className } = props;
@@ -26,7 +25,7 @@ const LoadingPlaceholder: React.FC<Props> = (props) => {
       <div className={s.repositories}>
         <GradientPlaceholder className={s.repositoryListTitle} />
         <ul className={s.repositoryList}>
-          { [...Array(5)].map((item, index) => (
+          {[...Array(5)].map((item, index) => (
             <li key={index} className={s.repositoryListItem}>
               <GradientPlaceholder className={s.repositoryTitle} />
               <GradientPlaceholder className={s.repositoryDescription} />
@@ -47,6 +46,6 @@ const LoadingPlaceholder: React.FC<Props> = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default LoadingPlaceholder;
