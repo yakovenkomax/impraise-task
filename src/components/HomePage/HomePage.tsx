@@ -15,7 +15,7 @@ const HomePage: React.FC<Props> = (props) => {
 
   return (
     <div className={rootClassNames}>
-      <Text size="h1" className={s.title}>GitHub Organization Explorer</Text>
+      <Text size="h1" className={s.title}>GitHub Organizations Explorer</Text>
       <Text>
         Enter the organization login after "/" in the address bar, ex.
         {' '}

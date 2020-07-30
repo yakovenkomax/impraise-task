@@ -25,6 +25,10 @@ const OrganizationPage = () => {
   const { organization } = data;
   const { name, location, avatarUrl, websiteUrl, repositories, pinnedItems } = organization;
 
+  if (name) {
+    document.title = name;
+  }
+
   const loadMore = () => {
     fetchMore({
       variables: {
