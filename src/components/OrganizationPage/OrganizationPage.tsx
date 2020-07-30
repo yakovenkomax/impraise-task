@@ -1,4 +1,3 @@
-import Link from 'components/Link/Link';
 import Tag from 'components/Tag/Tag';
 import React from 'react';
 import { useParams } from 'react-router-dom';
@@ -73,10 +72,10 @@ const OrganizationPage = () => {
         <div className={s.info}>
           <Text block size="h1" className={s.title}>{ name }</Text>
           <Tag icon="location" className={s.location}>
-            <Link fake>{ location }</Link>
+            { location }
           </Tag>
-          <Tag icon="link">
-            <Link fake>{ websiteUrl }</Link>
+          <Tag icon="link" linkProps={{ fake: true }}>
+            { websiteUrl }
           </Tag>
         </div>
       </div>

@@ -26,11 +26,11 @@ const PinnedRepositoryList: React.FC<Props> = (props) => {
           <li key={repository?.id} className={s.item}>
             <div className={s.main}>
               <Link fake cover>
-                <Text block size="h3" className={s.itemTitle}>
+                <Text block size="h3">
                   { repository?.name }
                 </Text>
               </Link>
-              <Text block>
+              <Text block className={s.description}>
                 { repository?.description }
               </Text>
             </div>
@@ -40,15 +40,19 @@ const PinnedRepositoryList: React.FC<Props> = (props) => {
                 color={repository?.primaryLanguage?.color}
                 className={s.tag}
               />
-              <Tag icon="star" className={s.tag}>
-                <Link fake className={s.tagLink}>
-                  { repository?.stargazers.totalCount }
-                </Link>
+              <Tag
+                icon="star"
+                className={s.tag}
+                linkProps={{ fake: true, className: s.tagLink }}
+              >
+                { repository?.stargazers.totalCount }
               </Tag>
-              <Tag icon="gitBranch" className={s.tag}>
-                <Link fake className={s.tagLink}>
-                  { repository?.forks.totalCount }
-                </Link>
+              <Tag
+                icon="gitBranch"
+                className={s.tag}
+                linkProps={{ fake: true, className: s.tagLink }}
+              >
+                { repository?.forks.totalCount }
               </Tag>
             </div>
           </li>

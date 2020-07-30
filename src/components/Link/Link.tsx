@@ -14,6 +14,8 @@ type Props = {
   children?: React.ReactNode,
 }
 
+export type LinkProps = Props;
+
 const Link: React.FC<Props> = (props) => {
   const { path, href, fake, cover, className, children } = props;
   const history = useHistory();

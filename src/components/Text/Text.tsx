@@ -11,7 +11,7 @@ type Props = {
 }
 
 const Text: React.FC<Props> = (props) => {
-  const { size = 'body', block, className, children } = props;
+  const { size, block, className, children } = props;
   const textClassNames = classnames(s.root, className, {
     [s.block]: Boolean(block),
     [s[`size-${size}`]]: Boolean(size),

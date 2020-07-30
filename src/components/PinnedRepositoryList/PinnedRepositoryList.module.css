@@ -38,16 +38,16 @@
   margin-right: var(--unit-5x);
 }
 
-.itemTitle {
-  margin-bottom: var(--unit-3x);
+.description {
+  margin-top: var(--unit-3x);
 }
 
 .main {
-  margin-bottom: auto;
   overflow: auto;
 }
 
 .tags {
+  margin-top: auto;
   display: flex;
 }
 

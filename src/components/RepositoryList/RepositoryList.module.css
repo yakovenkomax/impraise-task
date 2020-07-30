@@ -1,5 +1,10 @@
 .root {
-  padding: var(--unit-5x);
+  padding: var(--unit-5x) 0;
+}
+
+.title {
+  padding: 0 var(--unit-5x);
+  margin-bottom: var(--unit-5x);
 }
 
 .list {
@@ -9,14 +14,35 @@
 }
 
 .item {
+  position: relative;
   display: flex;
   flex-direction: column;
+  border-top: 1px solid var(--color-gray-3);
+  padding: var(--unit-3x) var(--unit-5x);
 }
 
-.main {
-  margin-bottom: var(--unit-2x);
+.item:hover {
+  background-color: var(--color-gray-4);
+}
+
+.item:active,
+.item:focus {
+  background-color: var(--color-gray-3);
+}
+
+.description {
+  margin-top: var(--unit-2x);
 }
 
 .tags {
   display: flex;
+  margin-top: var(--unit-4x);
+}
+
+.tagLink {
+  position: relative;
+}
+
+.tag:not(:last-child) {
+  margin-right: var(--unit-4x);
 }

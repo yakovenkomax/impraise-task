@@ -14,6 +14,10 @@ const LanguageTag: React.FC<Props> = (props) => {
   const { name, color, className } = props;
   const languageTagClassNames = classnames(className, s.root);
 
+  if (!name) {
+    return null;
+  }
+
   return (
     <Text block size="small" className={languageTagClassNames}>
       { !!color && (
