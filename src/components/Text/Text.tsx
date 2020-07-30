@@ -12,7 +12,7 @@ type Props = {
 
 const Text: React.FC<Props> = (props) => {
   const { size, block, className, children } = props;
-  const textClassNames = classnames(s.root, className, {
+  const rootClassNames = classnames(s.root, className, {
     [s.block]: Boolean(block),
     [s[`size-${size}`]]: Boolean(size),
   });
@@ -22,7 +22,7 @@ const Text: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className={textClassNames}>
+    <div className={rootClassNames}>
       { children }
     </div>
   );

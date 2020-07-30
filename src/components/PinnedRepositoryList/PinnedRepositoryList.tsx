@@ -20,7 +20,7 @@ const PinnedRepositoryList: React.FC<Props> = (props) => {
 
   return (
     <div className={s.root}>
-      <Text block size="h2" className={s.title}>Pinned repositories</Text>
+      <Text block size="h2">Pinned repositories</Text>
       <ul className={s.list}>
         { pinnedRepositoryList.map(repository => (
           <li key={repository?.id} className={s.item}>

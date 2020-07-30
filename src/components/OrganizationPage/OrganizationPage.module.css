@@ -9,6 +9,7 @@
 
 .avatar {
   width: 110px;
+  height: 110px;
   margin-right: var(--unit-3x);
 }
 
@@ -18,14 +19,6 @@
   border-radius: var(--border-radius);
 }
 
-.info {
-
-}
-
-.title {
-  margin-bottom: var(--unit-3x);
-}
-
-.location {
-  margin-bottom: var(--unit);
+.websiteUrl {
+  margin-top: var(--unit-2x);
 }

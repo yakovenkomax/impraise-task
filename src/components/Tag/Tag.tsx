@@ -16,7 +16,7 @@ type Props = {
 
 const Tag: React.FC<Props> = (props) => {
   const { icon, className, linkProps, children } = props;
-  const tagClassNames = classnames(className, s.root);
+  const rootClassNames = classnames(className, s.root);
 
   if (!children) {
     return null;
@@ -30,9 +30,9 @@ const Tag: React.FC<Props> = (props) => {
   )
 
   return (
-    <Text block size="small" className={tagClassNames}>
+    <Text block size="small" className={rootClassNames}>
       { linkProps ? (
-        <Link {...linkProps}>
+        <Link block {...linkProps}>
           { renderContent() }
         </Link>
       ) : (

@@ -1,4 +1,5 @@
 .root {
+  display: inline-block;
   cursor: pointer;
 }
 
@@ -9,6 +10,10 @@
 .root:active,
 .root:focus {
   color: var(--color-blue-1);
+}
+
+.block {
+  display: block;
 }
 
 /* Requires 'position: relative' on one of its parent nodes */

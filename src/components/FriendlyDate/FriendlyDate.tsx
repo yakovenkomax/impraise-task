@@ -16,7 +16,7 @@ type Props = {
 
 const FriendlyDate: React.FC<Props> = (props) => {
   const { date, className } = props;
-  const friendlyDateClassNames = classnames(s.root, className);
+  const rootClassNames = classnames(s.root, className);
 
   if (!date) {
     return null;
@@ -41,7 +41,7 @@ const FriendlyDate: React.FC<Props> = (props) => {
   }
 
   return (
-    <span className={friendlyDateClassNames}>
+    <span className={rootClassNames}>
       { text }
     </span>
   );

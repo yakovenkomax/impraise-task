@@ -2,12 +2,8 @@
   padding: var(--unit-5x);
 }
 
-.title {
-  margin-bottom: var(--unit-5x);
-}
-
 .list {
-  margin: 0;
+  margin: var(--unit-5x) 0 0;
   padding: 0;
   list-style-type: none;
   display: flex;

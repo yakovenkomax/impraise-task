@@ -1,0 +1,77 @@
+.root {
+}
+
+.header {
+  display: flex;
+  padding: var(--unit-6x) var(--unit-5x) var(--unit-4x);
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  margin-right: var(--unit-3x);
+}
+
+.title {
+  width: 100px;
+  height: 28px;
+  margin-bottom: var(--unit-5x);
+}
+
+.location {
+  width: 200px;
+  height: 16px;
+}
+
+.websiteUrl {
+  width: 140px;
+  height: 16px;
+  margin-top: var(--unit-2x);
+}
+
+.repositories {
+  padding: var(--unit-5x) 0;
+}
+
+.repositoryListTitle {
+  height: 25px;
+  width: 110px;
+  margin-left: var(--unit-5x);
+}
+
+.repositoryList {
+  margin: var(--unit-5x) 0 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.repositoryListItem {
+  padding: var(--unit-4x) var(--unit-5x);
+}
+
+.repositoryTitle {
+  width: 150px;
+  height: 21px;
+}
+
+.repositoryDescription {
+  margin-top: var(--unit-2x);
+  width: 400px;
+  height: 17px;
+}
+
+.tags {
+  display: flex;
+  padding: 0;
+  list-style-type: none;
+  margin-top: var(--unit-4x);
+}
+
+.tagWrapper:not(:last-child) {
+  margin-right: var(--unit-4x);
+}
+
+.tag {
+  width: 60px;
+  height: 16px;
+}

@@ -17,6 +17,7 @@
   --color-blue-1: #2e81d9;
   --color-biege: #f7f5f4;
 
+  --border-radius-small: 2px;
   --border-radius: 4px;
 
   --box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05);
@@ -24,7 +25,24 @@
   --font-size: 14px;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  box-sizing: border-box;
+  height: 100%;
   margin: 0;
+  font-size: var(--font-size);
+  font-family: 'Source Sans Pro', sans-serif;
+  color: var(--color-gray-1);
+  line-height: 1.25;
   background-color: var(--color-biege);
+
+  /* Improves font-smoothing on mac */
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100%;
 }

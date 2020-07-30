@@ -12,14 +12,14 @@ type Props = {
 
 const LanguageTag: React.FC<Props> = (props) => {
   const { name, color, className } = props;
-  const languageTagClassNames = classnames(className, s.root);
+  const rootClassNames = classnames(className, s.root);
 
   if (!name) {
     return null;
   }
 
   return (
-    <Text block size="small" className={languageTagClassNames}>
+    <Text block size="small" className={rootClassNames}>
       { !!color && (
         <div className={s.icon}>
           <div className={s.circle} style={{ backgroundColor: color }} />

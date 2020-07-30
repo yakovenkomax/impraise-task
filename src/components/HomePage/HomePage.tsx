@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import Link from 'components/Link/Link';
+import React from 'react';
+import Text from 'components/Text/Text';
+import classnames from 'classnames';
 
+import s from 'components/HomePage/HomePage.module.css';
 
-const HomePage = () => {
-  const [login, setLogin] = useState('');
-  const history = useHistory();
+type Props = {
+  className?: string,
+}
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    history.push(`/${login}`);
-  }
-
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setLogin(e.currentTarget.value);
-  }
+const HomePage: React.FC<Props> = (props) => {
+  const { className } = props;
+  const rootClassNames = classnames(className, s.root);
 
   return (
-    <div className="HomePage">
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleChange}/>
-        <button type="submit">Go</button>
-      </form>
+    <div className={rootClassNames}>
+      <Text size="h1" className={s.title}>GitHub Organization Explorer</Text>
+      <Text>
+        Enter the organization login after "/" in the address bar, ex.
+        {' '}
+        <Link path="/github">"github"</Link>
+        {' or '}
+        <Link path="/impraise">"impraise"</Link>
+        .
+      </Text>
     </div>
   );
 }

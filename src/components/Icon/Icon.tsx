@@ -27,10 +27,10 @@ type Props = {
 const Icon: React.FC<Props> = (props) => {
   const { icon, className } = props;
   const IconComponent = iconList[icon];
-  const iconClassNames = classnames(className, s.root);
+  const rootClassNames = classnames(className, s.root);
 
   return (
-    <div className={iconClassNames}>
+    <div className={rootClassNames}>
       <IconComponent />
     </div>
   );

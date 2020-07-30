@@ -10,38 +10,52 @@ type Props = {
   href?: string,
   fake?: boolean,
   cover?: boolean,
+  block?: boolean,
   className?: string,
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void,
   children?: React.ReactNode,
 }
 
 export type LinkProps = Props;
 
 const Link: React.FC<Props> = (props) => {
-  const { path, href, fake, cover, className, children } = props;
+  const { path, href, fake, cover, block, className, onClick, children } = props;
   const history = useHistory();
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
 
-    if (fake || !path) {
+    if (fake) {
+      return;
+    }
+
+    if (onClick) {
+      onClick(e);
+      return;
+    }
+
+    if (!path) {
       return;
     }
 
     history.push(path);
   }
 
-  const linkClassNames = classnames(className, s.root, { [s.cover]: Boolean(cover) });
+  const rootClassNames = classnames(className, s.root, {
+    [s.cover]: Boolean(cover),
+    [s.block]: Boolean(block),
+  });
 
   if (href) {
     return (
-      <a className={linkClassNames} href={href}>
+      <a className={rootClassNames} href={href}>
         { children }
       </a>
     );
   }
 
   return (
-    <div className={linkClassNames} onClick={handleClick}>
+    <div className={rootClassNames} onClick={handleClick}>
       { children }
     </div>
   );

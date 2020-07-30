@@ -14,11 +14,13 @@
 .size-h1 {
   font-size: 23px;
   color: var(--color-gray);
+  margin-bottom: var(--unit-3x);
 }
 
 .size-h2 {
   font-size: 20px;
   color: var(--color-gray);
+  margin-bottom: var(--unit-2x);
 }
 
 .size-h3 {

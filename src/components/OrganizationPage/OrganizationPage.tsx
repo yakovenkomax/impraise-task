@@ -1,8 +1,10 @@
+import LoadingPlaceholder from 'components/LoadingPlaceholder/LoadingPlaceholder';
 import Tag from 'components/Tag/Tag';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Text from 'components/Text/Text';
 import RepositoryList from 'components/RepositoryList/RepositoryList';
+import ErrorPlaceholder from 'components/ErrorPlaceholder/ErrorPlaceholder';
 import PinnedRepositoryList from 'components/PinnedRepositoryList/PinnedRepositoryList';
 import { useGetOrganizationQuery } from 'types/apollo.hooks';
 
@@ -10,24 +12,17 @@ import s from './OrganizationPage.module.css';
 
 
 const OrganizationPage = () => {
-  const { login = '' } = useParams();
+  const { login } = useParams();
   const { loading, data, error, fetchMore } = useGetOrganizationQuery({
+    skip: !login,
     variables: { login },
   });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  if (!data) {
-    return null;
-  }
+  if (!login || typeof login !== 'string') return null; // will redirect to HomePage by router
+  if (loading) return <LoadingPlaceholder />;
+  if (error || !data?.organization) return <ErrorPlaceholder />;
 
   const { organization } = data;
-
-  if (!organization) {
-    return null;
-  }
-
   const { name, location, avatarUrl, websiteUrl, repositories, pinnedItems } = organization;
 
   const loadMore = () => {
@@ -66,15 +61,17 @@ const OrganizationPage = () => {
   return (
     <div className={s.root}>
       <div className={s.header}>
-        <div className={s.avatar}>
-          <img className={s.image} src={avatarUrl} alt="" />
-        </div>
-        <div className={s.info}>
-          <Text block size="h1" className={s.title}>{ name }</Text>
+        { avatarUrl && (
+          <div className={s.avatar}>
+            <img className={s.image} src={avatarUrl} alt="" />
+          </div>
+        )}
+        <div>
+          <Text block size="h1">{ name }</Text>
           <Tag icon="location" className={s.location}>
             { location }
           </Tag>
-          <Tag icon="link" linkProps={{ fake: true }}>
+          <Tag icon="link" linkProps={{ fake: true }} className={s.websiteUrl}>
             { websiteUrl }
           </Tag>
         </div>
