@@ -1,9 +1,10 @@
-import Link from 'components/Link/Link';
 import React from 'react';
-import Text from 'components/Text/Text';
 import classnames from 'classnames';
+import Link from 'components/Link/Link';
+import Text from 'components/Text/Text';
 
 import s from './ErrorPlaceholder.module.css';
+
 
 type Props = {
   className?: string,

@@ -1,9 +1,10 @@
-import Link from 'components/Link/Link';
 import React from 'react';
+import Link from 'components/Link/Link';
 import Text from 'components/Text/Text';
 import classnames from 'classnames';
 
 import s from 'components/HomePage/HomePage.module.css';
+
 
 type Props = {
   className?: string,

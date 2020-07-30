@@ -1,11 +1,12 @@
-import LanguageTag from 'components/LanguageTag/LanguageTag';
-import Link from 'components/Link/Link';
+import React from 'react';
 import Tag from 'components/Tag/Tag';
 import Text from 'components/Text/Text';
-import React from 'react';
+import Link from 'components/Link/Link';
+import LanguageTag from 'components/LanguageTag/LanguageTag';
 import { PinnedItemListType, PinnedRepository, PinnedItem } from './PinnedRepositoryList.types';
 
 import s from './PinnedRepositoryList.module.css';
+
 
 type Props = {
   pinnedItemsList?: PinnedItemListType,

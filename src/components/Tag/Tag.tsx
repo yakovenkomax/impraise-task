@@ -1,8 +1,8 @@
-import Icon, { IconType } from 'components/Icon/Icon';
-import Link, { LinkProps } from 'components/Link/Link';
-import Text from 'components/Text/Text';
 import React from 'react';
 import classnames from 'classnames';
+import Text from 'components/Text/Text';
+import Icon, { IconType } from 'components/Icon/Icon';
+import Link, { LinkProps } from 'components/Link/Link';
 
 import s from './Tag.module.css';
 

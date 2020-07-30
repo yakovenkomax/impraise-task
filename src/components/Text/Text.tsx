@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+
 import s from './Text.module.css';
 
 

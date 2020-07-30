@@ -1,13 +1,14 @@
-import Button from 'components/Button/Button';
-import FriendlyDate from 'components/FriendlyDate/FriendlyDate';
-import LanguageTag from 'components/LanguageTag/LanguageTag';
-import Link from 'components/Link/Link';
-import Text from 'components/Text/Text';
 import React from 'react';
+import Tag from 'components/Tag/Tag';
+import Text from 'components/Text/Text';
+import Link from 'components/Link/Link';
+import Button from 'components/Button/Button';
+import LanguageTag from 'components/LanguageTag/LanguageTag';
+import FriendlyDate from 'components/FriendlyDate/FriendlyDate';
 import { RepositoryListType } from 'components/RepositoryList/RepositoryList.types';
 
 import s from './RepositoryList.module.css';
-import Tag from 'components/Tag/Tag';
+
 
 type Props = {
   repositoryList?: RepositoryListType,

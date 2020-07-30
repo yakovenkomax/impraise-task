@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 import s from './GradientPlaceholder.module.css';
 
+
 type Props = {
   className?: string,
 }

@@ -1,8 +1,9 @@
 import React from 'react';
-import GradientPlaceholder from 'components/GradientPlaceholder/GradientPlaceholder';
 import classnames from 'classnames';
+import GradientPlaceholder from 'components/GradientPlaceholder/GradientPlaceholder';
 
 import s from './LoadingPlaceholder.module.css';
+
 
 type Props = {
   className?: string,

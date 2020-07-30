@@ -1,11 +1,11 @@
-import { NetworkStatus } from '@apollo/client';
-import LoadingPlaceholder from 'components/LoadingPlaceholder/LoadingPlaceholder';
-import Tag from 'components/Tag/Tag';
 import React from 'react';
+import { NetworkStatus } from '@apollo/client';
 import { useParams } from 'react-router-dom';
+import Tag from 'components/Tag/Tag';
 import Text from 'components/Text/Text';
 import RepositoryList from 'components/RepositoryList/RepositoryList';
 import ErrorPlaceholder from 'components/ErrorPlaceholder/ErrorPlaceholder';
+import LoadingPlaceholder from 'components/LoadingPlaceholder/LoadingPlaceholder';
 import PinnedRepositoryList from 'components/PinnedRepositoryList/PinnedRepositoryList';
 import { useGetOrganizationQuery } from 'types/apollo.hooks';
 
